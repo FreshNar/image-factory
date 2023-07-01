@@ -2,6 +2,7 @@ from flask import Flask, request, send_file, render_template
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 from datetime import date, datetime
+import os
 
 app_name = 'Filler Image'
 
@@ -16,6 +17,7 @@ def home():
     height = request.args.get('h')
     text = request.args.get('text')
     color = "#e8e8ea"
+    font_path = os.path.join(app.static_folder, "fonts", 'Arial.ttf')
 
     if width and height:
         try:
@@ -39,7 +41,7 @@ def home():
         if not text:
             text = f"{width} x {height}"
         font_size = min(int(width) // len(text), int(height) // 10)  # Calculate the font size as a ratio
-        font = ImageFont.truetype("arial.ttf", size=font_size)  # Specify your desired font and size
+        font = ImageFont.truetype(font_path, size=font_size)  # Specify your desired font and size
         text_width, text_height = draw.textsize(text, font=font)
 
         # Calculate the position to center the text
@@ -52,7 +54,7 @@ def home():
         # Add boiler text at the bottom
         boiler_text = request.host
         boiler_font_size = font_size // 2
-        boiler_font = ImageFont.truetype("arial.ttf", size=boiler_font_size)
+        boiler_font = ImageFont.truetype(font_path, size=boiler_font_size)
         boiler_text_width, boiler_text_height = draw.textsize(boiler_text, font=boiler_font)
         boiler_x = 16
         boiler_y = int(height) - boiler_text_height - boiler_font_size
