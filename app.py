@@ -1,8 +1,9 @@
-from flask import Flask, request, send_file, render_template
+from flask import Flask, request, send_file, render_template, Response
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 from datetime import date, datetime
 import os
+from werkzeug.wsgi import FileWrapper
 
 app_name = 'Filler Image'
 
@@ -64,8 +65,11 @@ def home():
         image_io = BytesIO()
         image.save(image_io, 'JPEG')
         image_io.seek(0)
+    
+        # Create a FileWrapper around the BytesIO object
+        wrapper = FileWrapper(image_io)
 
-        return send_file(image_io, mimetype='image/jpeg', as_attachment=False, download_name=f'{width}x{height}.jpg')
+        return Response(wrapper, mimetype='image/jpeg')
     
     else:
         return render_template('index.html', DOMAIN=request.host, date=datetime.today().year, app_name=app_name)
