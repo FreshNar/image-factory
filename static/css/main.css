@@ -10,7 +10,7 @@
     font-size: 20px;
     text-decoration: none;
     margin-right: 20px;
-    color: #333;
+    color: black;
     font-weight: bold;
 }
 
@@ -30,9 +30,17 @@
 }
 
 /* CSS styles for the Body */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
 .container{
     max-width: 1080px;
     margin: 0 auto;
+    padding: 0 12px;
 }
 
 pre {
@@ -49,4 +57,38 @@ code {
 
 .bg-light{
     background-color: #efefef;
+}
+
+.footer {
+    width: 100%;
+    padding: 20px 0px; /* Adjust height as needed */
+    background-color: #f4f4f4;
+}
+
+.header{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-bottom: 1px solid #efefef;
+}
+
+.flex{
+    display:flex
+}
+
+.between{
+    justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.nav-link{
+    color: blue;
+    margin-left: 12px;
+}
+
+.example-img{
+    max-width: 100%;
 }

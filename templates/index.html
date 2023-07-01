@@ -5,50 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-    <title>Image Factory</title>
+    <title>{{ app_name }}</title>
 </head>
 
 <body>
-    <header class="container">
-        <nav class="navbar">
-            <a class="logo" href="/">Image Factory</a>
-            <a class="button-outline " href="#">View on GitHub</a>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a class="logo" href="/">{{ app_name }}</a>
+                <div>
+                    <a class="nav-link" href="#instructions">Instructions</a>
+                    <a class="nav-link" href="#faqs">FAQs</a>
+                </div>
+            </nav>
+        </div>
     </header>
     <main>
         <section>
             <div class="container">
-                <h1>What is Image Factory?</h1>
+                <h1>What is {{ app_name }}?</h1>
                 <p>This app allows you to generate placeholder images with custom dimensions. It's a simple tool that comes in handy when you need to quickly create images to use as placeholders in your projects.</p>
+                <hr>
             </div>
         </section>
-        <section>
+        <section id="instructions">
             <div class="container">
                 <h2>Instructions</h2>
                 <p>To generate an image with specific dimensions, append the following parameters to the URL: <strong>{{ DOMAIN }}</strong></p>
                 <ul>
-                    <li>w - The width of the image (must be an integer)</li>
-                    <li>h - The height of the image (must be an integer)</li>
+                    <li>w - The width of the image</li>
+                    <li>h - The height of the image</li>
                 </ul>
                 <h3>A simple example</h3>
-                <p>The URL for an image that has a <strong>height of 500px</strong> and a <strong>width of 500px</strong> would be:</p>
-                <pre><code><a href="?h=500&w=500">{{ DOMAIN }}?h=500&w=500</a></code></pre>
+                <p>The URL for an image that has a <strong>height of 250px</strong> and a <strong>width of 1080px</strong> would be:</p>
+                <pre><code><a href="?h=250&w=1080">{{ DOMAIN }}?h=250&w=1080</a></code></pre>
+                <img class="example-img" src="?h=250&w=1080" alt="1080x1080">
                 <h3>Adding Text</h3>
                 <p>To add text to an image, add the paramter "text". For example:</p>
-                <pre><code><a href="?h=500&w=500&text=Hello World!">{{ DOMAIN }}?h=500&w=500&text=Hello World!</a></code></pre>
+                <pre><code><a href="?h=250&w=1080&text=Hello World!">{{ DOMAIN }}?h=250&w=1080&text=Hello World!</a></code></pre>
+                <img class="example-img" src="?h=250&w=1080&text=Hello World!" alt="1080x1080">
+                <hr>
+            </div>
+        </section>
+        <section id="faqs">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <h3>What image format is returned?</h3>
+                <p>The generator returns all images in jpg format.</p>
+                <h3>How do I save the generated image?</h3>
+                <p>The generated image will be displayed in your web browser. To save it, right-click on the image and choose "Save Image As" or a similar option based on your browser.</p>
+                <h3>Can I use these images commercially?</h3>
+                <p>Yes, this program is released under the MIT License, which allows for unattributed commercial use. </p>
+                <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND.</p>
+                <hr>
             </div>
         </section>
         <section>
             <div class="container">
                 <h2>About</h2>
-                <p>Image Factory was developed by Kyle Kopelke at Fresh Narrative.</p>
-                <h2>MIT License</h2>
-                <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "App"), to deal in the App without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the App, and to permit persons to whom the App is furnished to do so, subject to the following conditions:</p>
-                <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the App.</p>
-                <p>THE APP IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE APP OR THE USE OR OTHER DEALINGS IN THE APP.</p>
+                <p>{{ app_name }} was developed by <a href="https://www.linkedin.com/in/kyle-kopelke/">Kyle Kopelke</a> at Fresh Narrative.</p>
             </div>
         </section>
     </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="flex between align-center">
+                <div>&copy; {{ date }} Kopelke LLC</div>
+                <div>
+                    <a href="">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
