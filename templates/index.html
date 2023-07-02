@@ -4,75 +4,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Generate placeholder images with custom dimensions using {{ app_name }}. A simple tool to create placeholder images for your website.">
+    <link rel="icon" type="image/x-icon" href="static/images/photo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPNSEY436"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-GYPNSEY436');
+        gtag('config', 'G-GYPNSEY436');
     </script>
-    <title>{{ app_name }}</title>
+    <title>{{ app_name }} - Custom Placeholder Images for Websites</title>
 </head>
 
 <body>
     <header class="header">
         <div class="container">
-            <nav class="navbar">
-                <a class="logo" href="/">{{ app_name }}</a>
-                <div>
-                    <a class="nav-link" href="#instructions">Instructions</a>
-                    <a class="nav-link" href="#faqs">FAQs</a>
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand logo d-flex align-center" href="/">
+                    <img src="static/img/photo.png" class="me-2"/>
+                    <span class="m-0">{{ app_name }}</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item me-2">
+                            <a class="nav-link link text-primary" href="#instructions">Get Started</a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </div>
     </header>
     <main>
-        <section>
-            <div class="container">
-                <h1>What is {{ app_name }}?</h1>
-                <p>This app allows you to generate placeholder images with custom dimensions. It's a simple tool that comes in handy when you need to quickly create images to use as placeholders in your projects.</p>
-                <hr>
+        <section class="section py-5">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <div class="row d-flex align-center">
+                        <div class="col-lg-7 col-12">
+                            <p class="fw-medium text-secondary">
+                                Always Fast, Free & Reliable
+                            </p>
+                            <h1 class="display-5 mb-2">Free Custom Placeholder Image Generator</h1>
+                            <p class="lead">Quickly create placeholder, filler or dummy images with custom dimensions
+                                and text for your website project or personal use.</p>
+                            <a href="#instructions" class="btn btn-primary me-3">Get Started</a>
+                            <button type="button" class="btn btn-white text-primary fw-medium" data-bs-toggle="modal" data-bs-target="#genModal" >Image Generator</button>
+                            <!-- Button trigger modal -->
+                            <!-- Modal -->
+                            <div id="genModal" class="modal modal-lg fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-4">
+                                            <h2 class="mt-1 mb-1">Image Generator</h2>
+                                            <p>Use this tool to generate images by entering the dimensions and optional custom text
+                                                below.</p>
+                                            <form action="/" method="get">
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <label for="heightInput" class="form-label fw-medium">Height</label>
+                                                        <input required type="text" name="h" class="form-control" id="heightInput"
+                                                            aria-describedby="heightHelp">
+                                                        <div id="heightHelp" class="form-text">Height in pixels.
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="widthInput" class="form-label fw-medium">Width</label>
+                                                        <input required type="text" name="w" class="form-control" id="widthInput"
+                                                            aria-describedby="widthHelp">
+                                                        <div id="widthHelp" class="form-text">Width in pixels.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="textInput" class="form-label fw-medium">Text (Optional)</label>
+                                                    <input type="text" name="text" class="form-control" id="textInput"
+                                                        aria-describedby="textHelp">
+                                                    <div id="textHelp" class="form-text">Custom text for the image.</div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Generate Image</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-12">
+                            <img src="static/img/load.svg"  class="img img-fluid"/>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        <section id="instructions">
+        <section id="instructions" class="py-5 bg-light">
             <div class="container">
-                <h2>Instructions</h2>
-                <p>To generate an image with specific dimensions, append the following parameters to the URL: <strong>{{ DOMAIN }}</strong></p>
-                <ul>
-                    <li>w - The width of the image</li>
-                    <li>h - The height of the image</li>
-                </ul>
-                <h3>A simple example</h3>
-                <p>The URL for an image that has a <strong>height of 250px</strong> and a <strong>width of 1080px</strong> would be:</p>
-                <pre><code><a href="?h=250&w=1080">{{ DOMAIN }}?h=250&w=1080</a></code></pre>
-                <img class="example-img" src="?h=250&w=1080" alt="1080x1080">
-                <h3>Adding Text</h3>
-                <p>To add text to an image, add the paramter "text". For example:</p>
-                <pre><code><a href="?h=250&w=1080&text=Hello World!">{{ DOMAIN }}?h=250&w=1080&text=Hello World!</a></code></pre>
-                <img class="example-img" src="?h=250&w=1080&text=Hello World!" alt="1080x1080">
-                <hr>
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card border-0 border-top border-primary border-4 shadow">
+                            <div class="card-body py-5 px-4">
+                                <h1>Getting Started</h1>
+                                <p>
+                                    With {{ app_name }} you can effortlessly generate placeholder images by specifying
+                                    your desired dimensions or text. Once the specifications are set, it instantly
+                                    generates the placeholder image, which can be used directly in your website project
+                                    or downloaded to your computer.
+                                </p>
+                                <p>To generate an image with specific dimensions, append the following parameters to the URL: <strong>{{ DOMAIN }}</strong></p>
+                                <ul>
+                                    <li><strong>w</strong> - Determines the <strong>width</strong> of the image in
+                                        pixels</li>
+                                    <li><strong>h</strong> - Determines the <strong>height</strong> of the image in
+                                        pixels</li>
+                                </ul>
+                                <p>All images generated by Filler Image are <strong>rendered in JPEG format.</strong>
+                                </p>
+                                <h2>A Simple Example</h2>
+                                <p>The URL for an image that has a <strong>width of 1080px</strong> and a <strong>height
+                                        of 250px</strong> would be:</p>
+                                <pre><code><a class="link" href="?w=1080&h=250">{{ DOMAIN }}?w=1080&h=250</a></code></pre>
+                                <img class="example-img" src="?w=1080&h=250"
+                                    alt="Example Image with dimensions">
+
+                                <h2>Adding Text to Images</h2>
+                                <p>To add text to an image, add the parameter "text". For example:</p>
+                                <pre><code><a class="link" href="?w=1080&h=250&text=Hello World!">{{ DOMAIN }}?w=1080&h=250&text=Hello World!</a></code></pre>
+                                <img class="example-img" src="?w=1080&h=250&text=Hello World!"
+                                    alt="Example Image with dimensions and text">
+
+
+                                <!-- 
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <h2>We can help with your current or upcoming web project!</h2>
+                                    </div>
+                                    <div class="col-12">
+                                        <p>Hire us to design, develop or provide support for your website.</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h3>Email Support</h3>
+                                                <p>Answers to your questions from US based customer support.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h3></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h3></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        <section id="faqs">
+        <section class="pb-4 bg-white">
             <div class="container">
-                <h2>Frequently Asked Questions</h2>
-                <h3>What image format is returned?</h3>
-                <p>The generator returns all images in jpg format.</p>
-                <h3>How do I save the generated image?</h3>
-                <p>The generated image will be displayed in your web browser. To save it, right-click on the image and choose "Save Image As" or a similar option based on your browser.</p>
-                <h3>Can I use these images commercially?</h3>
-                <p>Yes, this program is released under the MIT License, which allows for unattributed commercial use. </p>
-                <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND.</p>
-                <hr>
-            </div>
-        </section>
-        <section>
-            <div class="container">
-                <h2>About</h2>
-                <p>{{ app_name }} was developed by <a href="https://www.linkedin.com/in/kyle-kopelke/">Kyle Kopelke</a> at Fresh Narrative.</p>
+                <div class="row">
+                    <!--
+                    <div class="col-12">
+                        <h2>Terms of Use</h2>
+                        <p>
+                            Please read this policy carefully before using {{ app_name }} (the "App") developed by
+                            Kopelke Limited Liability Company (the "Company"). By using the App, you agree to be bound
+                            by the terms and conditions of this disclaimer.
+                        </p>
+                        <h3>No Warranty of Accuracy or Completeness or Reliability</h3>
+                        <p>
+                            The Company makes no representation or warranty, express or implied, regarding the accuracy,
+                            reliability, or completeness of any information or content provided by the App. The App is
+                            provided on an "as is" and "as available" basis, and you acknowledge that your use of the
+                            App is at your own risk.
+                        </p>
+                        <h3> Limitation of Liability</h3>
+                        <p>
+                            To the maximum extent permitted by applicable law, the Company and its affiliates,
+                            directors, officers, employees, agents, suppliers, or licensors shall not be liable for any
+                            indirect, incidental, special, consequential, or punitive damages, including without
+                            limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from
+                            your access to or use of or inability to access or use the App.
+                        </p>
+                    </div>
+                     -->
+                    <div>
+                        <h2>Credits</h2>
+                        <p>Filler Image was created by <a class="link" target="_blank" href="https://www.linkedin.com/in/kyle-kopelke/">Kyle Kopelke</a> at Kopelke LLC.</p>
+                        <ul>
+                            <li>
+                                <strong>Logo Icon:</strong> <a class="link" href="https://www.flaticon.com/free-icons/image-comics" title="Image Comics icons">Image Comics icons created by kmg design - Flaticon</a>
+                            </li>
+                            <li>
+                                <strong>Background: </strong> <a class="link" href="https://storyset.com/web">Web illustrations by Storyset</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -81,11 +235,13 @@
             <div class="flex between align-center">
                 <div>&copy; {{ date }} Kopelke LLC</div>
                 <div>
-                    <a href="">Contact Us</a>
                 </div>
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -6,13 +6,6 @@
     align-items: center;
 }
 
-.logo {
-    font-size: 20px;
-    text-decoration: none;
-    margin-right: 20px;
-    color: black;
-    font-weight: bold;
-}
 
 .button-outline {
     font-size: 16px;
@@ -31,16 +24,10 @@
 
 /* CSS styles for the Body */
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
     font-size: 16px;
-}
-
-.container{
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 12px;
+    font-family: 'Roboto', sans-serif;
 }
 
 pre {
@@ -65,9 +52,12 @@ code {
     background-color: #f4f4f4;
 }
 
+.container{
+    max-width: 1080px;
+}
+
 .header{
-    position: sticky;
-    top: 0;
+    z-index: 9999;
     background-color: white;
     border-bottom: 1px solid #efefef;
 }
@@ -84,11 +74,40 @@ code {
     align-items: center;
 }
 
+
+.logo {
+    color: #5f6368;
+    font-weight: 500;
+}
+
 .nav-link{
-    color: blue;
     margin-left: 12px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .example-img{
     max-width: 100%;
+}
+
+h1{
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0 0 24px;
+}
+
+h2{ 
+    font-size: 24px;
+    margin: 48px 0 24px;
+    font-weight: 400;
+}
+
+h3{
+    font-size: 20px;
+    margin: 32px 0 16px;
+    font-weight: 400;
+}
+
+.link{
+    text-decoration: none;
 }
